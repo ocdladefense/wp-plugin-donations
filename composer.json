@@ -1,0 +1,9 @@
+{
+    "name": "ocdladefense/wp-donors",
+    "description": "This plugin queries for OCDLA donors and their donations and displays these on the WordPress page",
+    "type": "wordpress-theme",
+    "minimum-stability": "dev",
+    "require": {
+        "ocdladefense/wp-salesforce": "~1.0"
+    }
+}
