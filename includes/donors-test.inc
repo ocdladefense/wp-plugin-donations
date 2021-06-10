@@ -1,33 +1,7 @@
 <?php
 
-function get_donors_test_array($param)
-{
-    // Calling get_records() function with "donors" param to get OSDLA donors' records
-    $donorRecords = get_donor_records($param);
-    //var_dump($donorRecords);
-    //exit;
-
-    $formattedDonorArray = format_donors_array($donorRecords); // TO BE IMPLEMENTED
-    //var_dump($formattedDonorArray); exit;
-
-
-    // // Sorting in alphabetic order
-    // sort($formattedDonorArray);
-
-    // //Testing...
-    // //var_dump($formattedDonorArray);
-    // //exit;
-    // //
-
-    // // Calls function 'sort_members_by_role' to get a sorted array
-    // $sortedByDonation = sort_donors_by_donation($formattedDonorArray);
-
-    // return $sortedByDonation;
-    return $formattedDonorArray;
-}
-
 // Function that formats the array based on the funds' names
-function format_donors_array($donorRecords) {
+function format_donors_array_copy($donorRecords) {
 
     //var_dump($donorRecords); exit;
 

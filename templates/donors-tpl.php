@@ -43,14 +43,13 @@ p {
 }
 </style>
 
-<?php //var_dump($donors);
-//exit; 
-?>
+<?php $donors = get_legislative_donors(44.00); ?>
 <h1 class="text-center text-muted mb-5">Legislative Advocacy</h1>
 <div class="container">
 
-    <?php //var_dump($donors["0 to 25"]);
-    //exit; 
+    <?php
+    // var_dump($donors);
+    // exit;
     ?>
 
     <?php $keys = array_keys($donors);
@@ -66,14 +65,15 @@ p {
 
             <tr>
                 <td style='color: #bf9500; font-weight: bold;'>
-                    <?php $rec["Org"] == null ? print "Private Party" : print $rec["Org"]; ?></td>
+                    <?php //$rec["Org"] == null ? print "Private Party" : print $rec["Org"]; 
+                            ?></td>
                 <td style="color: #53638c; font-weight: bold;">
                     <?php ($rec["FirstName"] != NULL and $rec["LastName"] != NULL) ? print $rec["FirstName"] . " " . $rec["LastName"] : print "No names provided"; ?>
                 </td>
-                <td style="color: green; font-weight: bold;"><?php print $rec["Date"]; ?></td>
+                <td style="color: green; font-weight: bold;"><?php //print $rec["Date"]; 
+                                                                        ?></td>
                 <td style="font-weight: bold; color: darkorchid; text-align: center;">
                     <?php print "$ " . $rec["Total"]; ?></td>
-
             </tr>
 
             <?php //var_dump($keys);
@@ -81,7 +81,6 @@ p {
                     ?>
 
             <?php endforeach; ?>
-
 
         </tbody>
     </table>

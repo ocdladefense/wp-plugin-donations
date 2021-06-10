@@ -1,26 +1,24 @@
 <?php
 
-require_once(ABSPATH . 'wp-content/plugins/wp-donors/includes/donors-test.inc');
+//$donors = get_donor_records(44.00);
 
-function get_legislative_fund($param) {
-    // do something...
-    $funds = get_donors_test_array($param);
-    //var_dump($funds);exit;
+function get_legislative_donors($param) {
+
+    $donorRecords = get_donor_records($param);
+    // var_dump($donorRecords);
+    // exit;
 
     $sortedArray = [
-        "0 to 25" => [],
-        "26 to 100" => [],
-        "101 to 250" => [],
-        "251 to 500" => [],
-        "501 to 1000" => [],
+        "over 2000" => [],
         "1001 to 2000" => [],
-        "over 2000" => []
+        "501 to 1000" => [],
+        "251 to 500" => [],
+        "101 to 250" => [],
+        "26 to 100" => [],
+        "0 to 25" => []
     ];
 
-    $legislative = $funds["Legislative Advocacy Fund"];
-    //var_dump($legislative); exit;
-
-    foreach ($legislative as $rec) {
+    foreach ($donorRecords as $rec) {
 
         if ($rec["Total"] > 0 && $rec["Total"] <= 25)
             $sortedArray["0 to 25"][] = $rec;
@@ -39,7 +37,7 @@ function get_legislative_fund($param) {
         }
     }
 
-    $sortedArray = remove_duplicate_names($sortedArray);
+    //$sortedArray = remove_duplicate_names($sortedArray);
 
     // TESTING
     //var_dump($sortedArray); exit;
@@ -47,48 +45,79 @@ function get_legislative_fund($param) {
     return $sortedArray;
 }
 
-// Helper function that finds and removes duplicate donor names within the same category
-function remove_duplicate_names($sortedArray) {
-
-    $refactoredArray = [];
-
-    $categories = [
-        "0 to 25",
-        "26 to 100",
-        "101 to 250",
-        "251 to 500",
-        "501 to 1000",
-        "1001 to 2000",
-        "over 2000"
-    ];
-
-    $index = 0;
-
-    foreach ($sortedArray as $category) {
-        //var_dump($sortedArray); exit;
+// function format_donors_array($donorRecords)
+// {
+//     $donorsArray = [];
+//     // Arry that will hold donors
+//     $donors = [];
+//     foreach ($donorRecords as $rec) {
         
-        $baseValues = [];
-        $newCategory = [];       
+//         $record = array( 
+//             "FirstName" => $rec["FirstName"],
+//             "LastName" => $rec["LastName"],
+//             "Contact" => $rec["Contact__c"],
+//             "Total" => $rec["Total"]
+//             //"Org" => $rec["OcdlaOrg__c"],
+//             //"Date" => $rec["OrderDate__c"],
+//         );  
+//         $donors[] = $record;
+//         //var_dump($donor); exit;
         
-        for ($i = 0; $i < count($category); $i++)
-        {
-            if (in_array($category[$i]["LastName"], $baseValues) == true) {
-                //$baseValues[] = $category[$i]["LastName"];
-                array_splice($category, $i, 1);
-            } else {
-                $baseValues[] = $category[$i]["LastName"];
-                array_push($newCategory, $category[$i]);
-            }      
-        }
-        //var_dump($baseValues); exit;
+//     }
+//     $donorsArray = $donors;
+    
+//     /////////////////////////////
+//     // TESTING
+//     //var_dump($donorsArray); exit;
+//     /////////////////////////////
 
-        $refactoredArray[$categories[$index]] = $newCategory;
-        //var_dump($refactoredArray);exit;
+//     return $donorsArray;
+// }
 
-        $index++;
-    }
 
-    //var_dump($refactoredArray);
 
-    return $refactoredArray;
-}
+// // Helper function that finds and removes duplicate donor names within the same category
+// function remove_duplicate_names($sortedArray) {
+
+//     $refactoredArray = [];
+
+//     $categories = [
+//         "over 2000",
+//         "1001 to 2000",
+//         "501 to 1000",
+//         "251 to 500",
+//         "101 to 250",
+//         "26 to 100",
+//         "0 to 25"
+//     ];
+
+//     $index = 0;
+
+//     foreach ($sortedArray as $category) {
+//         //var_dump($sortedArray); exit;
+        
+//         $baseValues = [];
+//         $newCategory = [];       
+        
+//         for ($i = 0; $i < count($category); $i++)
+//         {
+//             if (in_array($category[$i]["LastName"], $baseValues) == true) {
+//                 //$baseValues[] = $category[$i]["LastName"];
+//                 array_splice($category, $i, 1);
+//             } else {
+//                 $baseValues[] = $category[$i]["LastName"];
+//                 array_push($newCategory, $category[$i]);
+//             }      
+//         }
+//         //var_dump($baseValues); exit;
+
+//         $refactoredArray[$categories[$index]] = $newCategory;
+//         //var_dump($refactoredArray);exit;
+
+//         $index++;
+//     }
+
+//     //var_dump($refactoredArray);
+
+//     return $refactoredArray;
+// }
