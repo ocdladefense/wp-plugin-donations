@@ -43,7 +43,7 @@ p {
 }
 </style>
 
-<?php $donors = get_legislative_donors(44.00); ?>
+<?php $donors = get_donors(44.00); ?>
 <h1 class="text-center text-muted mb-5">Legislative Advocacy</h1>
 <div class="container">
 

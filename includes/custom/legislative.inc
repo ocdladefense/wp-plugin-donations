@@ -2,11 +2,11 @@
 
 //$donors = get_donor_records(44.00);
 
-function get_legislative_donors($param) {
+function get_donors($param) {
 
     $donorRecords = get_donor_records($param);
-    // var_dump($donorRecords);
-    // exit;
+    //var_dump($donorRecords);
+    //exit;
 
     $sortedArray = [
         "over 2000" => [],

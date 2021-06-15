@@ -1,8 +1,11 @@
 <?php
 
-function get_donor_records($param, $startDate = "2017-01-01", $endDate = "2021-06-30")
+function get_donor_records($param, $startDate = NULL, $endDate = NULL)
 {
     $api = load_api();
+
+    $startDate = !empty($startDate) ? $startDate : DONATION_START_DATE;
+    $endDate = !empty($endDate) ? $endDate : DONATION_END_DATE;
 
     // Quering for Donor information
 
