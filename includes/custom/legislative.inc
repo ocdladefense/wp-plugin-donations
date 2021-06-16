@@ -2,9 +2,10 @@
 
 //$donors = get_donor_records(44.00);
 
-function get_donors($param) {
 
-    $donorRecords = get_donor_records($param);
+function get_donors($param, $startDate, $endDate) {
+
+    $donorRecords = get_donor_records($param, $startDate, $endDate);
     //var_dump($donorRecords);
     //exit;
 

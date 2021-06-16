@@ -1,6 +1,6 @@
 <?php
 
-function get_donor_records($param, $startDate = NULL, $endDate = NULL)
+function get_donor_records($param, $startDate, $endDate)
 {
     $api = load_api();
 
